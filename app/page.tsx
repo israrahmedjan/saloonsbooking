@@ -52,9 +52,12 @@ export default async function Home() {
   return (
     <>
 
-      <RevealWrapper>
-        <Hero />
+     {salons.length>0 && (
+<RevealWrapper>
+        <Hero heroData={salons[0]} />
       </RevealWrapper>
+     )}
+      
       {/* <div className="flex justify-center items-center">
         <hr />
         <Counter />

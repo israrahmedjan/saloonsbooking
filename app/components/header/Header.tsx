@@ -7,6 +7,7 @@ import Topmenu from "./Topmenu";
 import { Caveat } from "next/font/google";
 import Profile from "./Profile";
 import MobileProfile from "./MobileProfile";
+import { useUserStore } from "@/store/useUserStore";
 
 const caveat = Caveat({
   subsets: ["latin"],
@@ -50,6 +51,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
+  const bookNow = useUserStore((state) => state.salon);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,10 +81,10 @@ export default function Header() {
             className={`${caveat.className} text-5xl font-[700] text-secondary`}
           >
             <span className="text-primary">Our</span>
-            Salon
+            Salon 
           </Link>
              <Link
-  href="/salons/royal-beauty-salon/services/hair-cut"
+   href={`/salons/${bookNow?.salons?.slug}/services/${bookNow?.slug}`}
   className="btn-type-1 sm:block md:hidden inline-flex items-center gap-2  text-xs py-1 px-3"
 >
   <Calendar size={18} />
@@ -127,7 +129,7 @@ export default function Header() {
               </div>
             ))}
                 <Link
-              href="/salons/royal-beauty-salon/services/hair-cut"
+              href={`/salons/${bookNow?.salons?.slug}/services/${bookNow?.slug}`}
               className="btn-type-1"
             >
               <Calendar size={18} />

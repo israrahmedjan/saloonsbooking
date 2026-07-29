@@ -4,39 +4,18 @@ import Link from "next/link";
 import { Calendar1 } from "lucide-react";
 import { useEffect } from "react";
 import { supabase } from "@/app/lib/supabaseClient";
+import { useUserStore } from "@/store/useUserStore";
 
-export default function HeroSection() {
-
+export default function HeroSection({heroData}:{heroData:any}) {
+ const { setSalon } = useUserStore();
+  console.log("Hero Data", heroData);
     useEffect(()=>
     {
-       async function get_category()
-        {
-// const { data, error } = await supabase
-//   .from("services")
-//   .select(`
-//     *,
-//     service_categories!inner(*),
-//     salons!inner(*)
-//   `)
-//   .eq("salons.slug", 'royal-beauty-salon')
-//   .in("service_categories.slug", [
-//     "haircuts",
-//     "hairstyling"
-//   ])
-
-//   const { data, error } = await supabase
-//   .from("services")
-//   .select(`
-//     *
-//   `)
-//   .eq("saloon_id", 1) // Salon ID
-//   .eq("id", 1)        // Category ID
-//   .single();
-
-
-  //console.log('category data111', data);
-        }
-   get_category();
+   if(heroData)
+   {
+      setSalon(heroData);
+   }
+    
     },[])
 
     return (
@@ -48,8 +27,8 @@ export default function HeroSection() {
 >
   {/* Overlay */}
   <div className="absolute inset-0 bg-white/50" />
-
-  <div className="relative container mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+{heroData && (
+<div className="relative container mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
     <div className="max-w-xl lg:max-w-2xl space-y-6">
       {/* Heading */}
       <h1 className="flex flex-col gap-2 font-normal leading-tight">
@@ -72,7 +51,7 @@ export default function HeroSection() {
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 pt-4">
         <Link
-          href="/appointment"
+          href={`/salons/${heroData.salons.slug}/services/${heroData.slug}`}
           className="btn-type-1 w-full sm:w-auto justify-center text-base md:text-lg py-3"
         >
           <Calendar1 size={18} />
@@ -80,7 +59,7 @@ export default function HeroSection() {
         </Link>
 
         <Link
-          href="/appointment"
+          href={`/salons/${heroData.salons.slug}/services/${heroData.slug}`}
           className="btn-type-2 w-full sm:w-auto justify-center text-base md:text-lg py-3 font-semibold"
         >
           Explore Our Services
@@ -88,6 +67,8 @@ export default function HeroSection() {
       </div>
     </div>
   </div>
+)}
+  
 </section>
     );
 }
