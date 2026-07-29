@@ -125,13 +125,7 @@ export default function MobileProfile() {
   // Auth Links Component
   const AuthLinks = () => (
     <>
-         <Link
-  href="/salons/royal-beauty-salon/services/hair-cut"
-  className="btn-type-1 inline-flex items-center gap-2  text-xs py-1 px-3"
->
-  <Calendar size={18} />
-  <span>Book Appointment</span>
-</Link>
+       
       <Link
         href="/auth"
         className="flex items-center gap-1 md:gap-2 text-xs md:text-sm font-medium transition-colors hover:text-primary"

@@ -81,7 +81,13 @@ export default function Header() {
             <span className="text-primary">Our</span>
             Salon
           </Link>
-
+             <Link
+  href="/salons/royal-beauty-salon/services/hair-cut"
+  className="btn-type-1 sm:block md:hidden inline-flex items-center gap-2  text-xs py-1 px-3"
+>
+  <Calendar size={18} />
+  <span>Book Now</span>
+</Link>
           {/* Desktop Menu */}
           <nav className="hidden md:flex items-center gap-6 text-[16px]">
             {menus.map((menu) => (
@@ -146,10 +152,10 @@ export default function Header() {
 
         {/* Mobile Menu - Shows when hamburger is clicked */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t bg-white shadow-lg">
+          <div className="md:hidden border-t border-secondary/10 bg-white shadow-lg ">
             <nav className="flex flex-col max-h-[70vh] overflow-y-auto">
               {menus.map((menu) => (
-                <div key={menu.href} className="w-full border-b border-gray-100">
+                <div key={menu.href} className="w-full border-b border-secondary/10">
                   {menu.dropdown ? (
                     <div className="w-full">
                       <button

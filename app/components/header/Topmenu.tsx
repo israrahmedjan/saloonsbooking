@@ -60,10 +60,9 @@ function DesktopTopMenu() {
     </div>
   );
 }
-
 function MobileTopMenu() {
   return (
-    <div className="md:hidden bg-secondary/10">
+    <div className="fixed top-0 left-0 right-0 z-50 md:hidden bg-secondary/10 backdrop-blur-md">
       <div className="container mx-auto flex h-12 items-center justify-end px-4">
         <Link
           href="tel:+923001234567"
@@ -84,6 +83,7 @@ export default function Topmenu() {
     <>
       <DesktopTopMenu />
       <MobileTopMenu />
+        <div className="h-12 md:hidden" />
     </>
   );
 }
