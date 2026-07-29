@@ -61,7 +61,35 @@ export async function POST(request: NextRequest) {
 
         break;
       }
+case "payment_intent.succeeded": {
+  const paymentIntent = event.data.object;
 
+  console.log("✅ Payment Intent Succeeded");
+  console.log("Payment Intent ID:", paymentIntent.id);
+
+  // Agar metadata payment_intent me save ki hai to
+  const cart: number[] = JSON.parse(paymentIntent.metadata?.cart || "[]");
+
+  if (cart.length > 0) {
+    const { data, error } = await supabase
+      .from("appointments")
+      .update({
+        status: "approved",
+        stripe_payment_intent_id: paymentIntent.id,
+      })
+      .in("id", cart)
+      .select();
+
+    if (error) {
+      console.error(error);
+      throw error;
+    }
+
+    console.log("Updated Appointments:", data);
+  }
+
+  break;
+}
       default:
         console.log(`Unhandled event type: ${event.type}`);
     }

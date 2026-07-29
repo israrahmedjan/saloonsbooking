@@ -8,6 +8,7 @@ export async function POST(request: NextRequest) {
 
         const body = await request.json();
         const { user, cart } = body;
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
         console.log("my userdfd",user);
         // check befor send data
@@ -73,9 +74,9 @@ export async function POST(request: NextRequest) {
                     },
                 ],
 
-                success_url: "http://localhost:3000/payment",
+                success_url: `${baseUrl}/payment`,
 
-                cancel_url: "http://localhost:3000/payment",
+                cancel_url: `${baseUrl}/payment`,
 
                 metadata: {
                     userId: user.userId,
