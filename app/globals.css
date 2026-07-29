@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #2D2D2D;
+  --color-secondary: #C9A581;
+
+
+  --color-background: #ffffff;
+  --color-foreground: #2D2D2D;
+}
+html,
+body {
+   overflow-x: hidden;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  /* color: inherit; */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 1.5rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+@layer base {
+  body {
+    @apply bg-gray-50;
+  }
+
+  h1 {
+    @apply text-6xl font-medium;
+  }
+   h2 {
+    @apply text-4xl font-medium;
+  }
+   h3 {
+    @apply text-3xl font-medium;
+  }
+ h4 {
+    @apply text-[20px]
+           sm:text-[22px]
+           md:text-[24px]
+           lg:text-[30px]
+           font-medium
+           leading-tight;
+  }
+ 
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-5 py-2 rounded-lg;
+  }
+
+  /* .btn-primary
+  {
+     @apply bg-secondary text-white px-5 py-2 rounded-lg;
+  } */
+  .card {
+    @apply rounded-xl border p-6 shadow;
+  }
+  .btn-type-1
+  {
+    @apply inline-flex items-center gap-2 bg-primary whitespace-nowrap text-white px-6 py-1.5 rounded-4xl text-sm;
+  }
+  .btn-type-1:hover {
+    @apply underline
+     hover:bg-secondary  hover:text-white transition-all hover:scale-105 shadow-md;
+  }
+
+   .btn-type-2
+  {
+    @apply inline-flex items-center gap-2 whitespace-nowrap border-1 border-secondary  px-6 py-1.5 rounded-4xl text-sm;
+  }
+  .btn-type-2:hover {
+    @apply underline
+     hover:bg-primary  hover:text-white transition-all hover:scale-100 shadow-md hover:border-none;
+  }
+}
+
+
+/* Testimonials Pagination */
+@layer utilities {
+
+  .reveal {
+    opacity: 0;
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s ease;
+    will-change: transform, opacity;
+  }
+
+  .reveal-up {
+    transform: translateY(50px);
+  }
+
+  .reveal-left {
+    transform: translateX(-60px);
+  }
+
+  .reveal-right {
+    transform: translateX(60px);
+  }
+
+  .reveal-zoom {
+    transform: scale(1.08);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale(1);
+  }
 }
