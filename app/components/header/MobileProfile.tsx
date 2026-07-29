@@ -138,7 +138,7 @@ export default function MobileProfile() {
       <div className="h-4 md:h-5 w-px bg-gray-200 hidden xs:block" />
 
       <Link
-        href="/signup"
+        href="/auth"
         className="flex items-center gap-1 md:gap-2 rounded-xl px-2 md:px-3 py-1 md:py-2 text-xs md:text-sm font-medium text-primary transition-all hover:opacity-90 active:scale-95"
       >
         <User size={16} className="md:w-[18px] md:h-[18px]" />

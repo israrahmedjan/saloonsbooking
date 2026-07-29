@@ -38,11 +38,11 @@ const menus = [
   },
   {
     name: "About",
-    href: "/about",
+    href: "/services/about",
   },
   {
     name: "Contact",
-    href: "/contact",
+    href: "/services/contact",
   },
 ];
 

@@ -75,7 +75,7 @@ export default function Profile() {
           </Link>
           <div className="h-5 w-px bg-gray-200" />
           <Link
-            href="/signup"
+            href="/auth"
             className="rounded-xl py-2 text-sm   transition-all duration-200 hover:opacity-90"
           >
             Sign Up
