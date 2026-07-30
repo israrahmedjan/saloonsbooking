@@ -24,7 +24,9 @@ export default async function Home() {
       slug),
     salons!inner(id,
       name,
-      slug)
+      slug),
+    reviews!left(rating,
+    comment)
   `)
   .eq("salons.slug", 'royal-beauty-salon')
   .in("service_categories.slug", [

@@ -90,18 +90,7 @@ export const getUserSession = async () => {
 export const PayNowProcess = async (user:any,cart:slotsType[]) => {
   try {
     
-    const currentUser = await getUserSession()
-    // if(currentUser)
-    // {
-    //   alert('User sign in');
-    // }
-    // else
-    // {
-    //   alert('Not Sign in')
-    // }
-    // return false;
-  console.log(user);
-  // return false;
+
     const response = await fetch("/api/checkout", {
       method: "POST",
       headers: {
@@ -134,6 +123,21 @@ export const PayNowProcess = async (user:any,cart:slotsType[]) => {
         : "Something went wrong. Please try again."
     );
   }
+};
+
+
+// Helper function - Component ke bahar
+export const getAverageRating = (reviews:any) => {
+  if (!reviews || reviews.length === 0) return null;
+  
+  const total = reviews.reduce((sum:number, review:any) => sum + review.rating, 0);
+  const avg = total / reviews.length;
+  
+  return {
+    average: avg.toFixed(1),
+    count: reviews.length,
+    stars: Math.round(avg) // Full stars ke liye
+  };
 };
 
 

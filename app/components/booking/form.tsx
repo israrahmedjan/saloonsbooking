@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   User,
@@ -13,6 +13,7 @@ import Cartform from "./cartForm";
 import { getUserSession, PayNowProcess } from "@/app/lib/auth";
 import { useCartStore } from "@/store/useCartStore";
 import { useUserStore } from "@/store/useUserStore";
+import LoginRequired from "./loginRequired";
 type FormValues = {
    userId: string;
   name: string;
@@ -25,6 +26,7 @@ type FormValues = {
 function CustomerForm() {
    const { cart, removeFromCart } = useCartStore();
    const profileUser = useUserStore((state=>state.user));
+   const [isLogin, setisLogin] = useState(true);
   const {
     register,
     handleSubmit,
@@ -41,7 +43,14 @@ function CustomerForm() {
 });
 
   const onSubmit = async (userData: FormValues) => {
-    
+    const currentUser = await getUserSession();
+    if(!currentUser)
+    {
+      setisLogin(false);
+      return false;
+    }
+   
+  
     let user = {...userData,prfileUserId:profileUser?.id}
    // console.log("testddd",profileUser?.id);
    await PayNowProcess(user,cart);  
@@ -78,7 +87,12 @@ useEffect(() => {
       >
         Billing Details
       </h2>
-
+{!isLogin && (
+    <div className="mt-5 mb-3">
+      <LoginRequired />
+    </div>
+    
+  )}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-0">
          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[70%_30%]">
       {/* Name & Email */}

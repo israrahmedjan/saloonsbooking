@@ -1,11 +1,15 @@
 import CalendarContant from "@/app/components/booking/calendar";
 import Breadcrumbs from "@/app/components/general/breadcrumbs";
+import ServiceHeader from "@/app/components/booking/ServiceHeader";
 import { supabase } from "@/app/lib/supabaseClient";
 import { Salon } from "@/app/lib/types";
 import React from "react";
-import { Calendar } from "lucide-react";
+import { Calendar, DollarSign, Clock3 } from "lucide-react";
+import Reviews from "@/app/components/booking/reviews";
 
-
+// ============================================
+// TYPES
+// ============================================
 type Props = {
   params: Promise<{
     slug: string;
@@ -13,13 +17,61 @@ type Props = {
   }>;
 };
 
+
+
+// ============================================
+// HELPER FUNCTIONS
+// ============================================
+
+// Get average rating from reviews
+const getAverageRating = (reviews: any[] | undefined): string | null => {
+  if (!reviews || reviews.length === 0) return null;
+  
+  const total = reviews.reduce((sum, review) => sum + review.rating, 0);
+  const average = total / reviews.length;
+  return average.toFixed(1);
+};
+
+// Get review count
+const getReviewCount = (reviews: any[] | undefined): number => {
+  return reviews?.length || 0;
+};
+
+// Format price
+const formatPrice = (price: number): string => {
+  return `$${price?.toFixed(2) || "0.00"}`;
+};
+
+// Format date
+const formatDate = (dateString: string): string => {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+// ============================================
+// MAIN COMPONENT
+// ============================================
 export default async function Page({ params }: Props) {
+  // ============================================
+  // 1. PARAMS EXTRACT
+  // ============================================
   const { slug, serviceSlug } = await params;
 
-  // let service_id = 0;
-  let salons: Salon | null = null;
-  try {
+  // ============================================
+  // 2. STATE VARIABLES
+  // ============================================
+  let salons: any | null = null;
+  let service: any | null = null;
+  let serviceReviews: any[] = [];
+  let errorMessage: string | null = null;
 
+  // ============================================
+  // 3. FETCH DATA FROM SUPABASE
+  // ============================================
+  try {
     const { data, error } = await supabase
       .from("salons")
       .select(`
@@ -27,54 +79,65 @@ export default async function Page({ params }: Props) {
         name,
         slug,
         description,
-  
         services (
           id,
           name,
           price,
           slug,
           duration,
-          max_slots
+          max_slots,
+          reviews (
+            id,
+            rating,
+            comment,
+            user_id,
+            created_at
+          )
         )
       `)
       .eq("slug", slug)
       .single();
+
     if (error) {
-      console.log(error.message);
-      return;
+      errorMessage = error.message;
+      console.error("Supabase Error:", errorMessage);
+    } else {
+      salons = data;
     }
-    salons = data;
-
-    if (salons) {
-      // Run any additional logic or operations with the retrieved salon data here       
-    }
-
   } catch (error: unknown) {
-    console.log(
-      "Supabase Error:",
-      error instanceof Error
-        ? error.message
-        : "Something went wrong"
-    );
+    errorMessage = error instanceof Error ? error.message : "Something went wrong";
+    console.error("Supabase Error:", errorMessage);
   }
 
-  const service = salons?.services?.find(
-    (item) => item.slug === serviceSlug
-  );
-
-  if (!service) {
-    return;
+  // ============================================
+  // 4. FIND CURRENT SERVICE
+  // ============================================
+  if (salons?.services) {
+    service = salons.services.find(
+      (item: any) => item.slug === serviceSlug
+    ) || null;
   }
 
-  const service_id = service.id;
+  // ============================================
+  // 5. EXTRACT SERVICE REVIEWS
+  // ============================================
+  if (service?.reviews) {
+    serviceReviews = service.reviews;
+  }
 
-    const breadcrumbs = {
+  // ============================================
+  // 6. CALCULATE RATINGS
+  // ============================================
+  const averageRating = getAverageRating(serviceReviews);
+  const reviewCount = getReviewCount(serviceReviews);
 
+  // ============================================
+  // 7. BREADCRUMBS
+  // ============================================
+  const breadcrumbs: any = {
     Salon_slug: salons?.name || "SalonName",
     Service_slug: service?.name || "ServiceName",
-
-  }
-
+  };
 
   return (
     <>
@@ -86,23 +149,29 @@ export default async function Page({ params }: Props) {
       {/* Section Calendar */}
 
       <section className="py-2">
-        <div className="container py-3 mb-6 mt-10  flex justify-between ">
-         <h4 className="flex items-center gap-2">
-  <Calendar className="h-8 w-8 text-secondary" />
-  {salons?.name} - ({service?.name}) - (<span className="text-secondary">  ${service?.price}</span>)
-</h4>
-
-          {/* <h4>{salons?.name} - ({service?.name})</h4> */}
-        </div>
+     <ServiceHeader service={service} averageRating={averageRating} />
         {salons && (<div className="">
           {salons?.id && salons?.services?.[0]?.id && (
-            <CalendarContant
+           <>
+           <CalendarContant
               salons={salons}
               salon_id={salons.id}
               service={service}
             />
+              {serviceReviews && (
+      <div className="container">
+              <Reviews 
+                serviceReviews={serviceReviews}
+                salonId={salons?.id}
+              />
+              </div>
           )}
+          </>
+          )}
+        
         </div>)}
+
+    
       </section>
 
     </>

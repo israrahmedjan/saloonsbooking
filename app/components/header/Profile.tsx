@@ -15,6 +15,7 @@ import {
   Menu,
   X,
   Calendar,
+  UserPlus,
 } from "lucide-react";
 
 import { getUserSession, logout } from "@/app/lib/auth";
@@ -68,16 +69,18 @@ export default function Profile() {
         <>
           <Link
             href="/auth"
-            className="flex items-center gap-2 text-sm   transition-colors hover:text-[#C9A581]"
+            className="flex items-center gap-1 text-sm   transition-colors hover:text-[#C9A581]"
           >
             <User size={18} />
+            
             Sign In
           </Link>
           <div className="h-5 w-px bg-gray-200" />
           <Link
             href="/auth"
-            className="rounded-xl py-2 text-sm   transition-all duration-200 hover:opacity-90"
+            className="rounded-xl py-2 text-sm flex gap-1 items-center   transition-all duration-200 hover:opacity-90"
           >
+             <UserPlus size={15} />
             Sign Up
           </Link>
         </>
