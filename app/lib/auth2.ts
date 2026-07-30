@@ -23,8 +23,8 @@ export async function handleSignUp(email: string, password: string, metadata?: a
 }
 
 export async function signInWithGoogle() {
-  console.log(`${window.location.origin}`)
-  false;
+  // console.log(`${window.location.origin}`)
+  // false;
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
