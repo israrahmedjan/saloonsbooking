@@ -26,19 +26,19 @@ function Cart() {
 
   // Stripe dummy data
   const payment = {
-  userId: 12,
-  amount: 150,
-  currency: "usd",
-};
+    userId: 12,
+    amount: 150,
+    currency: "usd",
+  };
 
-const PayNow = async () => {
-    
-   const userData = await getUserSession();
-  PayNowProcess(userData,cart);  
-};
+  const PayNow = async () => {
+
+    const userData = await getUserSession();
+    PayNowProcess(userData, cart);
+  };
 
   return (
-  <div className="w-full rounded-2xl bg-white p-6 shadow-sm">
+    <div className="w-full rounded-2xl bg-white p-6 shadow-sm">
       {/* Heading */}
       {/* {JSON.stringify(cart,null,2)} */}
       <div className="mb-6 flex items-center gap-2">
@@ -68,18 +68,18 @@ const PayNow = async () => {
                   {item.service_name}
                 </h3>
 
-                <div className="mt-3 space-y-2 text-sm text-gray-600">
+                <div className="mt-3 space-y-2  text-sm text-gray-600">
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
-                 <span>{format(new Date(item.avb_date), "MMMM dd, yyyy")}</span>
+                    <span>{format(new Date(item.avb_date), "MMMM dd, yyyy")}</span>
                   </div>
-<div className="flex items-center gap-2">
-  <Clock3 className="h-4 w-4" />
-  <span>
-    {format(new Date(`1970-01-01T${item.start_time}`), "hh:mm a")} -{" "}
-    {format(new Date(`1970-01-01T${item.end_time}`), "hh:mm a")}
-  </span>
-</div>
+                  <div className="flex items-center  gap-2">
+                    <Clock3 className="h-4 w-4" />
+                    <span>
+                      {format(new Date(`1970-01-01T${item.start_time}`), "hh:mm a")} -{" "}
+                      {format(new Date(`1970-01-01T${item.end_time}`), "hh:mm a")}
+                    </span>
+                  </div>
 
                   <div className="flex items-center gap-2">
                     <Timer className="h-4 w-4" />
@@ -103,7 +103,7 @@ const PayNow = async () => {
                 }
                 className="rounded-md p-2 text-red-500 transition hover:bg-red-50"
               >
-                <Trash2 className="h-5 w-5" /> 
+                <Trash2 className="h-4 w-4" />
               </button>
             </div>
           </div>

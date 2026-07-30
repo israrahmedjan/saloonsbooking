@@ -19,7 +19,7 @@ export default function ServiceHeader({
   salonName 
 }: ServiceHeaderProps) {
   return (
-    <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 md:py-5">
+    <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 mb-7 mt-6 md:py-5">
       {/* Main Container */}
       <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3 sm:gap-4 lg:gap-6">
         
@@ -37,7 +37,7 @@ export default function ServiceHeader({
           
           {/* Title - Chota */}
           <div className="min-w-0 flex-1">
-            <h1 className="text-sm sm:text-base md:text-2xl lg:text-3xl font-semibold text-gray-900 truncate  sm:max-w-[250px] md:max-w-[450px] lg:max-w-[500px] whitespace-nowrap">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-900 truncate  sm:max-w-[250px] md:max-w-[450px] lg:max-w-[500px] whitespace-nowrap">
             Our Service :  {service?.name || "Service Name"}
             </h1>
             {salonName && (

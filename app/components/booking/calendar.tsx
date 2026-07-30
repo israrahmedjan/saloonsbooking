@@ -130,7 +130,7 @@ function CalendarContant({ salons, salon_id, service }: { salons: Salon; salon_i
         {/* {JSON.stringify(salons?.services?.length,null,2)} */}
         {/* Left Column - Calendar List */}
         <div className="lg:col-span-8">
-          <div className="bg-white rounded-lg border border-gray-100 p-4 sm:p-5">
+          <div className="bg-white rounded-lg shadow-sm p-4 sm:p-5">
             {/* Header */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-5">
               <button
@@ -179,8 +179,8 @@ function CalendarContant({ salons, salon_id, service }: { salons: Salon; salon_i
                   <div
                     key={day.toString()}
                     className={`
-                      rounded-lg border transition-all overflow-hidden
-                      ${isSelected ? "border-secondary/10 border shadow-md bg-secondary/10" : "border-gray-100"}
+                      rounded-lg  transition-all overflow-hidden
+                      ${isSelected ? "border-secondary/10 border  bg-secondary/10" : "border-gray-100"}
                       ${hasSlots ? "cursor-pointer hover:border-secondary/30" : "cursor-default"}
                     `}
                   >

@@ -172,7 +172,7 @@ export default function Reviews({ serviceReviews,salonId }: ReviewsProps) {
 
   // Render reviews
   return (
-    <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+    <div className="bg-white rounded-xl shadow-sm p-4 mt-12 sm:p-6">
       <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-6">
         Customer Reviews
         <span className="ml-2 text-sm font-normal text-gray-500">
