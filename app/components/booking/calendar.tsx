@@ -180,7 +180,7 @@ function CalendarContant({ salons, salon_id, service }: { salons: Salon; salon_i
                     key={day.toString()}
                     className={`
                       rounded-lg  transition-all overflow-hidden
-                      ${isSelected ? "border-secondary/10 border  bg-secondary/10" : "border-gray-100"}
+                      ${isSelected ? "border-secondary/10 border  bg-secondary/5" : "border-gray-100"}
                       ${hasSlots ? "cursor-pointer hover:border-secondary/30" : "cursor-default"}
                     `}
                   >

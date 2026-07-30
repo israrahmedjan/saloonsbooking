@@ -124,7 +124,7 @@ const isPastDate = (() => {
                 key={period.id}
                 onClick={() => setSelectedPeriod(period.id)}
                 className={`
-                  flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg transition-all text-sm
+                  flex items-center justify-center gap-2 px-3 py-1 md:py-2.5 rounded-lg transition-all text-sm
                   ${isSelected
                     ? "bg-secondary text-white shadow-sm"
                     : "bg-gray-50 text-gray-600 hover:bg-gray-100"
