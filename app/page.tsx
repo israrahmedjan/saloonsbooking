@@ -55,7 +55,7 @@ export default async function Home() {
      {salons.length>0 && (
 <RevealWrapper>
         <Hero heroData={salons[0]} />
-      </RevealWrapper>
+</RevealWrapper>
      )}
       
       {/* <div className="flex justify-center items-center">

@@ -23,13 +23,15 @@ export async function handleSignUp(email: string, password: string, metadata?: a
 }
 
 export async function signInWithGoogle() {
+  console.log(`${window.location.origin}`)
+  false;
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
       redirectTo: `${window.location.origin}`,
     },
   });
-   console.log('Current Data',data);
+   //console.log('Current Data',data);
   return { data, error };
 }
 

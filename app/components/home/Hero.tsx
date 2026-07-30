@@ -52,7 +52,7 @@ export default function HeroSection({heroData}:{heroData:any}) {
       <div className="flex flex-col sm:flex-row gap-4 pt-4">
         <Link
           href={`/salons/${heroData.salons.slug}/services/${heroData.slug}`}
-          className="btn-type-1 w-full sm:w-auto justify-center text-base md:text-lg py-3"
+          className="btn-type-1 w-full sm:w-auto justify-center text-base md:text-lg py-2.5"
         >
           <Calendar1 size={18} />
           Book Appointment
@@ -60,7 +60,7 @@ export default function HeroSection({heroData}:{heroData:any}) {
 
         <Link
           href={`/salons/${heroData.salons.slug}/services/${heroData.slug}`}
-          className="btn-type-2 w-full sm:w-auto justify-center text-base md:text-lg py-3 font-semibold"
+          className="btn-type-2 w-full sm:w-auto justify-center text-base md:text-lg py-2.5 font-semibold"
         >
           Explore Our Services
         </Link>
