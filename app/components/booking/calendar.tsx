@@ -132,37 +132,40 @@ function CalendarContant({ salons, salon_id, service }: { salons: Salon; salon_i
         <div className="lg:col-span-8">
           <div className="bg-white rounded-lg shadow-sm p-4 sm:p-5">
             {/* Header */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-5">
-              <button
-                onClick={previousWeek}
-                className="flex items-center gap-1.5 px-3 py-2 sm:py-1.5 w-full sm:w-auto justify-center border border-gray-100 rounded-lg hover:border-primary/30 hover:text-primary transition text-sm"
-              >
-                <ChevronLeft size={14} />
-                <span className="hidden xs:inline">Prev</span>
-                <span className="xs:hidden">‹</span>
-              </button>
+           <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 mb-4 sm:mb-5">
+  {/* Previous Button */}
+  <button
+    onClick={previousWeek}
+    className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 sm:py-2  rounded-lg hover:border-primary/40 hover:bg-primary/5 hover:text-primary transition-all duration-200 text-xs sm:text-sm font-medium text-gray-600 flex-shrink-0"
+  >
+    <ChevronLeft size={14} className="sm:size-4" strokeWidth={2} />
+    <span className="hidden xs:inline">Previous</span>
+    <span className="xs:hidden">Prev</span>
+  </button>
 
-              <div className="text-center flex-1">
-                <div className="flex items-center justify-center gap-2">
-                  <CalendarDays size={16} className="text-primary flex-shrink-0" />
-                  <h3 className="text-base sm:text-lg font-medium text-gray-700">
-                    {format(weekStart, "MMMM yyyy")}
-                  </h3>
-                </div>
-                <p className="text-xs sm:text-sm text-gray-400 mt-0.5">
-                  {format(weekStart, "dd MMM")} - {format(weekEnd, "dd MMM yyyy")}
-                </p>
-              </div>
+  {/* Date Info - Center */}
+  <div className="flex-1 min-w-0 text-center px-1 sm:px-2">
+    <div className="flex items-center justify-center gap-1.5 sm:gap-2">
+      <CalendarDays size={14} className="sm:size-4 text-primary flex-shrink-0" strokeWidth={1.5} />
+      <h3 className="text-sm sm:text-base font-semibold text-gray-800 truncate">
+        {format(weekStart, "MMMM yyyy")}
+      </h3>
+    </div>
+    <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5 truncate">
+      {format(weekStart, "dd MMM")} — {format(weekEnd, "dd MMM yyyy")}
+    </p>
+  </div>
 
-              <button
-                onClick={nextWeek}
-                className="flex items-center gap-1.5 px-3 py-2 sm:py-1.5 w-full sm:w-auto justify-center border border-gray-100 rounded-lg hover:border-primary/30 hover:text-primary transition text-sm"
-              >
-                <span className="hidden xs:inline">Next</span>
-                <span className="xs:hidden">›</span>
-                <ChevronRight size={14} />
-              </button>
-            </div>
+  {/* Next Button */}
+  <button
+    onClick={nextWeek}
+    className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 sm:py-2  rounded-lg hover:border-primary/40 hover:bg-primary/5 hover:text-primary transition-all duration-200 text-xs sm:text-sm font-medium text-gray-600 flex-shrink-0"
+  >
+    <span className="hidden xs:inline">Next</span>
+    <span className="xs:hidden">Next</span>
+    <ChevronRight size={14} className="sm:size-4" strokeWidth={2} />
+  </button>
+</div>
 
             {/* List View Days */}
             <div className="space-y-2 sm:space-y-3">
