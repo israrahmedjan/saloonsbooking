@@ -41,7 +41,7 @@ export default function ServiceHeader({
             Our Service :  {service?.name || "Service Name"}
             </h1>
             {salonName && (
-              <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 truncate max-w-[100px] xs:max-w-[150px] sm:max-w-[200px] md:max-w-[300px]">
+              <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 truncate max-w-[300px] xs:max-w-[350px] sm:max-w-[200px] md:max-w-[300px]">
                 by {salonName}
               </p>
             )}

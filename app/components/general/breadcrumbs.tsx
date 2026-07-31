@@ -13,7 +13,7 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
      <section
         className="mt-20  py-20 bg-secondary/5 text-white bg-[url('/images/inner-page-2.png')] bg-cover bg-center bg-no-repeat"
       >
-    <div className="container mx-auto flex flex-wrap items-center gap-2 text-md">
+    <div className="container mx-auto flex flex-wrap items-center gap-2 text-lg">
 
       {/* Home */}
       <Link
@@ -44,7 +44,7 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
       <ChevronRight size={16} className="text-secondary" />
 
       {/* Current Service */}
-      <span className="font-medium text-secondary">
+      <span className="font-medium text-white">
         {breadcrumbs.Service_slug}
       </span>
 
