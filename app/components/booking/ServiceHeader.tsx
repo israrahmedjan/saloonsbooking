@@ -37,15 +37,16 @@ export default function ServiceHeader({
           
           {/* Title - Chota */}
           <div className="min-w-0 flex-1">
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-900 truncate  sm:max-w-[250px] md:max-w-[450px] lg:max-w-[500px] whitespace-nowrap">
-            Our Service :  {service?.name || "Service Name"}
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-900 whitespace-nowrap  sm:max-w-[250px] md:max-w-[450px] lg:max-w-[500px] whitespace-nowrap">
+          OUR SERVICE ( {service?.name || "Service Name"} )
             </h1>
             {salonName && (
-              <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 truncate max-w-[300px] xs:max-w-[350px] sm:max-w-[200px] md:max-w-[300px]">
+              <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 whitespace-nowrap max-w-[300px] xs:max-w-[350px] sm:max-w-[200px] md:max-w-[300px]">
                 by {salonName}
               </p>
             )}
           </div>
+
         </div>
 
         {/* ============================================ */}
