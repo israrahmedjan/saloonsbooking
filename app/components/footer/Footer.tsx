@@ -137,7 +137,7 @@ function Footer() {
                   className="shrink-0 text-secondary"
                 />
 
-                <span>info@oursalon.com</span>
+                <span>info@demo.com</span>
               </li>
 
               <li className="flex items-start gap-3">
