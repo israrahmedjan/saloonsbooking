@@ -118,7 +118,7 @@ function Footer() {
                 />
 
                 <span>
-                  123 Main Street, New York, NY 10001
+                  123 Main Street, New York, NY 12345, USA
                 </span>
               </li>
 
