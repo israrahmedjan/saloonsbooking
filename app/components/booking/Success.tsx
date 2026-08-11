@@ -242,7 +242,7 @@ const {clearCart} = useCartStore();
           </div>
         </div>
 
-        {/* Saved Transactions Summary (Optional) */}
+        {/* Saved 11 Transactions Summary (Optional) */}
         {/* <div className="mt-4 bg-gray-50 rounded-2xl p-4 border border-gray-200">
           <div className="flex items-center justify-between text-[#2D2D2D]">
             <span className="text-xs font-medium flex items-center gap-2">
