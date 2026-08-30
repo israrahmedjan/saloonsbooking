@@ -8,7 +8,7 @@ import { useUserStore } from "@/store/useUserStore";
 
 export default function HeroSection({heroData}:{heroData:any}) {
  const { setSalon } = useUserStore();
-  console.log("Hero Data", heroData);
+  //console.log("Hero Data", heroData);
     useEffect(()=>
     {
    if(heroData)

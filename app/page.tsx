@@ -38,7 +38,7 @@ export default async function Home() {
     }
     salons = (data ?? []) as Salon[];
 
-    console.log("Salons Data:", salons);
+    //console.log("Salons Data:", salons);
     // console.log(JSON.stringify(data, null, 2));
 
   } catch (error: unknown) {

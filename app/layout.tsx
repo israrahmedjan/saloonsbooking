@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+
 import { Lato } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header/Header";
@@ -11,13 +11,18 @@ const lato = Lato({
   display: "swap",
 });
 
+import type { Metadata } from "next";
+import { getPageMetadata } from "@/app/lib/meta";
+
+export async function generateMetadata(): Promise<Metadata> {
+
+  const metadata = await getPageMetadata("home", "home");
+  //console.log("Generated metadata:", metadata);
+  return metadata;
+  
+}
 
 
-
-export const metadata: Metadata = {
-  title: "Saloon Booking System",
-  description: "Saloon Booking System built with Next.js, Supabase, and Tailwind CSS",
-};
 
 export default function RootLayout({
   children,

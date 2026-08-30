@@ -2,12 +2,13 @@ import CalendarContant from "@/app/components/booking/calendar";
 import Breadcrumbs from "@/app/components/general/breadcrumbs";
 import ServiceHeader from "@/app/components/booking/ServiceHeader";
 import { supabase } from "@/app/lib/supabaseClient";
-import { Salon } from "@/app/lib/types";
+
 import React from "react";
-import { Calendar, DollarSign, Clock3 } from "lucide-react";
+
 import Reviews from "@/app/components/booking/reviews";
 
-// ============================================
+import type { Metadata } from "next";
+import { getServiceMetadata } from "@/app/lib/meta";
 // TYPES
 // ============================================
 type Props = {
@@ -16,6 +17,14 @@ type Props = {
     serviceSlug: string;
   }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug, serviceSlug } = await params;
+  const metadata = await getServiceMetadata(slug, serviceSlug);
+  return metadata;
+  
+}
+// ============================================
 
 
 
@@ -38,18 +47,18 @@ const getReviewCount = (reviews: any[] | undefined): number => {
 };
 
 // Format price
-const formatPrice = (price: number): string => {
-  return `$${price?.toFixed(2) || "0.00"}`;
-};
+// const formatPrice = (price: number): string => {
+//   return `$${price?.toFixed(2) || "0.00"}`;
+// };
 
-// Format date
-const formatDate = (dateString: string): string => {
-  return new Date(dateString).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-};
+// // Format date
+// const formatDate = (dateString: string): string => {
+//   return new Date(dateString).toLocaleDateString("en-US", {
+//     year: "numeric",
+//     month: "long",
+//     day: "numeric",
+//   });
+// };
 
 // ============================================
 // MAIN COMPONENT
