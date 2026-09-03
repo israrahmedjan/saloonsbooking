@@ -2,7 +2,7 @@
 
 export default function WhyChooseUs({ data }: any) {
   return (
-    <section className="why-choose-us">
+    <section className="why-choose-us container">
       <div className="why-choose-us__container">
         <div className="why-choose-us__header">
           <h2>{data.heading}</h2>

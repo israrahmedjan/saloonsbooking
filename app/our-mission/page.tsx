@@ -39,17 +39,10 @@ export default async function Page() {
     <>
       {/* <Breadcrumbs breadcrumbs={breadcrumbs} /> */}
 
-      <section className="py-12 mt-16">
-        <div className="container">
-          {/* <h1 className="text-3xl font-bold mb-8 text-left">
-            {title}
-          </h1> */}
-
-     {page_sections && page_sections.length > 0 && (
+      <section className="py-12 mt-8">
+        {page_sections && page_sections.length > 0 && (
      <PageSections sections={page_sections ?? []} />
      )}
-          
-        </div>
       </section>
     </>
   );

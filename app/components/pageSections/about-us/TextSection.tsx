@@ -5,7 +5,7 @@ export default function OurStorySection({
   const imageRight = data.image_position !== "left";
 
   return (
-    <section className="story-section">
+    <section className="story-section container">
       <div
         className={`story-container ${
           imageRight ? "lg:flex-row" : "lg:flex-row-reverse"

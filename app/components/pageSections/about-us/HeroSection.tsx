@@ -10,7 +10,7 @@ export default function HeroSection({ data }: PropsType) {
     >
       <div className="hero-overlay" />
 
-      <div className="hero-container">
+      <div className="hero-container container">
         <div className="hero-content">
           {data.subheading && (
             <p className="hero-subheading">

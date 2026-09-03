@@ -3,7 +3,7 @@ export default function ReadyAppointment({
   data,
 }: any) {
   return (
-    <section className="ready-appointment">
+    <section className="ready-appointment container">
       <div className="ready-appointment__container">
 
         <div className="ready-appointment__content">
