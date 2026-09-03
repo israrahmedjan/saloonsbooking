@@ -1,4 +1,5 @@
 
+import RevealWrapper from "../../general/RevealWrapper";
 import FeatureSection from "./FeatureSection";
 import HeroSection from "./HeroSection";
 import ReadyAppointment from "./ReadyAppointment";
@@ -19,50 +20,56 @@ type Props = {
 export default function PageSections({ sections }: Props) {
   return (
     <>
-    {/* <pre>
+      {/* <pre>
     <div>{JSON.stringify(sections, null, 2)}</div></pre> */}
       {sections.map((section) => {
         switch (section.section_type) {
           case "hero":
             return (
-              <HeroSection
-                key={section.id}
-                data={section.content}
-              />
+              <RevealWrapper key={section.id} delay={100} className="reveal-zoom">
+                <HeroSection
+                  data={section.content}
+                />
+              </RevealWrapper>
             );
 
-           case "text":
+          case "text":
             return (
-              <OurStorySection
-                key={section.id}
-                data={section.content}
-              />
+              <RevealWrapper key={section.id} delay={100} className="reveal-up">
+                <OurStorySection
+                  data={section.content}
+                />
+              </RevealWrapper>
             );
-  
+
 
           case "services":
             return (
-              <ServiceSection
-                key={section.id}
-                data={section.content}
-              />
+              <RevealWrapper key={section.id} delay={100} className="reveal-up">
+                <ServiceSection
+                  key={section.id}
+                  data={section.content}
+                /></RevealWrapper>
             );
 
           case "cta":
             return (
-              <ReadyAppointment
-                key={section.id}
-                data={section.content}
-              />
-            );  
+              <RevealWrapper key={section.id} delay={100} className="reveal-up">
+                <ReadyAppointment
+                  key={section.id}
+                  data={section.content}
+                /></RevealWrapper>
+            );
 
-       
-        case "features":
+
+          case "features":
             return (
-              <FeatureSection
-                key={section.id}
-                data={section.content}
-              />
+              <RevealWrapper key={section.id} delay={100} className="reveal-up">
+                <FeatureSection
+                  key={section.id}
+                  data={section.content}
+                />
+              </RevealWrapper>
             );
 
 
