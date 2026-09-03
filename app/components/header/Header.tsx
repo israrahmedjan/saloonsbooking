@@ -42,7 +42,7 @@ const menus = [
   },
   {
     name: "Contact",
-    href: "/services/contact-us",
+    href: "/contact-us",
   },
 ];
 
