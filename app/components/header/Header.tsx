@@ -33,12 +33,12 @@ const menus = [
     ],
   },
   {
-    name: "Salons",
-    href: "/salons",
+    name: "Our Mission",
+    href: "/our-mission",
   },
   {
     name: "About",
-    href: "/services/about-us",
+    href: "/about-us",
   },
   {
     name: "Contact",
