@@ -109,7 +109,7 @@ a {
   }
 
   .hero-overlay {
-    @apply absolute inset-0 bg-black/45;
+    @apply absolute inset-0 bg-black/30;
   }
 
   .hero-container {
